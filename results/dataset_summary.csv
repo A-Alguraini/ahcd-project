@@ -1,0 +1,11 @@
+item,value
+Total images,16800
+Official train images,13440
+Official test images,3360
+Image size,32 x 32
+Channels,1 (grayscale)
+Pixel value range,0 to 255
+Number of classes,28
+Images per class (train),480 to 480
+Images per class (test),120 to 120
+Train / val / test after split,11424 / 2016 / 3360

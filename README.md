@@ -1,0 +1,49 @@
+# Arabic Handwritten Character Recognition (AHCD)
+
+This is our project proposal for the deep learning course. The goal is to classify images of handwritten Arabic letters into the correct letter class.
+
+Team: Bader Alqahtani and Abdulaziz Alguraini
+
+## The problem
+
+We're using the Arabic Handwritten Characters Dataset (AHCD). Given a 32x32 grayscale image of a single handwritten Arabic letter, the model should predict which of the 28 letters it is. This is a multi-class image classification problem.
+
+We picked this because Arabic handwriting recognition is less developed than English/Latin handwriting recognition, and it could be useful for things like digitizing handwritten Arabic documents and forms.
+
+## Dataset
+
+AHCD has 16,800 images total, written by 60 people. It comes with an official split of 13,440 training images and 3,360 test images, 480 and 120 per letter respectively, so the classes are perfectly balanced. Each image is 32x32 pixels, grayscale, and the data is provided as CSV files where each row is a flattened image.
+
+- Download it here: https://www.kaggle.com/mloey1/ahcd1 (you need a free Kaggle account)
+- License: check the Kaggle page sidebar
+- Source: El-Sawy, A., Loey, M., & El-Bakry, H. (2017). Arabic Handwritten Characters Recognition using Convolutional Neural Network. WSEAS Transactions on Computer Research, 5.
+
+The dataset itself isn't included in this repo, you have to download it separately (see below).
+
+## How to run this
+
+1. Download and unzip the dataset from the Kaggle link above.
+2. Put the CSV files in a `data/` folder in the project root.
+3. Install the requirements:
+   ```
+   python -m pip install -r requirements.txt
+   ```
+4. Run the notebook:
+   ```
+   python -m notebook ahcd_exploration.ipynb
+   ```
+   and run all cells.
+
+## What's in this repo
+
+- `ahcd_exploration.ipynb` — loads the data, checks it, makes the plots, and creates the train/val split
+- `data/` — where the dataset CSVs go (not included, you download it yourself)
+- `figures/` — the plots the notebook generates
+- `splits/` — the train/validation split indices, so it's reproducible
+- `results/` — a summary of the dataset stats
+
+## Split and metric
+
+We're keeping the official test set (3,360 images) untouched until final evaluation. From the official training set, we split off 15% for validation (stratified by class, random seed 42), leaving 85% for actual training. That's 11,424 train / 2,016 validation / 3,360 test.
+
+For the evaluation metric we're using accuracy, since the classes are perfectly balanced.

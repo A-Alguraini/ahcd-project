@@ -2,7 +2,7 @@
 
 This is our project proposal for the deep learning course. The goal is to classify images of handwritten Arabic letters into the correct letter class.
 
-Team: Bader Alqahtani and Abdulaziz Alguraini
+Team: Abdulaziz Alguraini, Bader Alqahatani
 
 ## The problem
 
@@ -15,7 +15,7 @@ We picked this because Arabic handwriting recognition is less developed than Eng
 AHCD has 16,800 images total, written by 60 people. It comes with an official split of 13,440 training images and 3,360 test images, 480 and 120 per letter respectively, so the classes are perfectly balanced. Each image is 32x32 pixels, grayscale, and the data is provided as CSV files where each row is a flattened image.
 
 - Download it here: https://www.kaggle.com/mloey1/ahcd1 (you need a free Kaggle account)
-- License: check the Kaggle page sidebar
+- License: [check the Kaggle page sidebar and put it here]
 - Source: El-Sawy, A., Loey, M., & El-Bakry, H. (2017). Arabic Handwritten Characters Recognition using Convolutional Neural Network. WSEAS Transactions on Computer Research, 5.
 
 The dataset itself isn't included in this repo, you have to download it separately (see below).
@@ -37,6 +37,7 @@ The dataset itself isn't included in this repo, you have to download it separate
 ## What's in this repo
 
 - `ahcd_exploration.ipynb` — loads the data, checks it, makes the plots, and creates the train/val split
+- `milestone2_mlp.ipynb` — Milestone 2: PyTorch data pipeline, shallow (2 hidden layers) and deep (5 hidden layers) MLPs, loss/optimizer/learning rate comparisons
 - `data/` — where the dataset CSVs go (not included, you download it yourself)
 - `figures/` — the plots the notebook generates
 - `splits/` — the train/validation split indices, so it's reproducible
@@ -45,5 +46,7 @@ The dataset itself isn't included in this repo, you have to download it separate
 ## Split and metric
 
 We're keeping the official test set (3,360 images) untouched until final evaluation. From the official training set, we split off 15% for validation (stratified by class, random seed 42), leaving 85% for actual training. That's 11,424 train / 2,016 validation / 3,360 test.
+
+From Milestone 2 on we use an 80/20 train/validation split instead, since the milestone asks for it. That's 10,752 train / 2,688 validation / 3,360 test.
 
 For the evaluation metric we're using accuracy, since the classes are perfectly balanced.

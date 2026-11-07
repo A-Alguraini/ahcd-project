@@ -34,10 +34,15 @@ The dataset itself isn't included in this repo, you have to download it separate
    ```
    and run all cells.
 
+Milestone 3 needs a GPU (it trains VGG19, ResNet18 and MobileNetV2). We ran `milestone3_cnn.ipynb` on Google Colab: upload the notebook, switch the runtime to a T4 GPU, create a `data` folder with the four CSV files, and use Runtime → Run all. It takes about 30–45 minutes.
+
 ## What's in this repo
 
 - `ahcd_exploration.ipynb` — loads the data, checks it, makes the plots, and creates the train/val split
 - `milestone2_mlp.ipynb` — Milestone 2: PyTorch data pipeline, shallow (2 hidden layers) and deep (5 hidden layers) MLPs, loss/optimizer/learning rate comparisons
+- `milestone3_cnn.ipynb` — Milestone 3: CNN from scratch (augmentation, tuning, early stopping) and transfer learning with VGG19, ResNet18 and MobileNetV2, plus SVM / random forest / logistic regression on the pretrained features. We ran it on Google Colab with a GPU
+- `logs/` — per-epoch training logs (CSV) from Milestone 3
+- `checkpoints/` — the selected CNN checkpoint (`cnn_best.pt`) and the configuration files. The pretrained checkpoints are too big for GitHub (VGG19 is over 500 MB), so they are not included
 - `data/` — where the dataset CSVs go (not included, you download it yourself)
 - `figures/` — the plots the notebook generates
 - `splits/` — the train/validation split indices, so it's reproducible
@@ -50,3 +55,17 @@ We're keeping the official test set (3,360 images) untouched until final evaluat
 From Milestone 2 on we use an 80/20 train/validation split instead, since the milestone asks for it. That's 10,752 train / 2,688 validation / 3,360 test.
 
 For the evaluation metric we're using accuracy, since the classes are perfectly balanced.
+
+## Results so far
+
+All numbers are on the official AHCD test set (3,360 images).
+
+| Milestone | Model | Test accuracy |
+|---|---|---|
+| 2 | Shallow MLP (2 hidden layers) | 0.7914 |
+| 2 | Deep MLP (5 hidden layers) | 0.7345 |
+| 3 | CNN from scratch (6 conv layers, early stopping) | **0.9845** |
+| 3 | ResNet18, last 3 layers fine-tuned | 0.9357 |
+| 3 | SVM on ResNet18 features | 0.9482 |
+
+The CNN trained from scratch is our best model so far.

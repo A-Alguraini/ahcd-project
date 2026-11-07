@@ -1,0 +1,9 @@
+{
+  "model": "ResNet18",
+  "strategy": "Last 3 layers",
+  "lr": 0.0001,
+  "best epoch": 8,
+  "val acc": 0.9255952380952381,
+  "input_size": 64,
+  "test_acc": 0.9357142857142857
+}

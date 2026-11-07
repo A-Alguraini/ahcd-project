@@ -1,0 +1,17 @@
+{
+  "model": "AHCDCNN",
+  "lr": 0.001,
+  "dropout": 0.3,
+  "base_filters": 32,
+  "optimizer": "Adam",
+  "loss": "CE + Label Smoothing",
+  "weight_decay": 0.0001,
+  "batch_size": 128,
+  "early_stopping_monitor": "train_acc",
+  "patience": 5,
+  "selected_epoch": 40,
+  "val_acc": 0.9828869047619048,
+  "test_acc": 0.9845238095238096,
+  "train_mean": 0.05275421962141991,
+  "train_std": 0.1945091336965561
+}

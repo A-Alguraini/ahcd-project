@@ -1,3 +1,8 @@
 data/
 .ipynb_checkpoints/
 __pycache__/
+checkpoints/tl_*.pt
+checkpoints/best_pretrained.pt
+checkpoints/cnn_es_*.pt
+milestone3_outputs/
+milestone3_outputs.zip
